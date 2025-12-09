@@ -78,13 +78,13 @@ This API offers two endpoints:
 ### Installation Steps
 
 1. **Clone the Repository**:
-    ```bash
+    ```
     git clone https://github.com/GajrajSinghChundawat/tender-barrier-analyzer.git
     cd tender-barrier-analyzer
     ```
 
 2. **Create and activate a virtual environment**:
-    ```bash
+    ```
     python -m venv venv
     # For Windows
     venv\Scripts\activate
@@ -93,17 +93,17 @@ This API offers two endpoints:
     ```
 
 3. **Install the required dependencies**:
-    ```bash
+    ```
     pip install -r requirements.txt
     ```
 
 4. **Download spaCy model** (for SpaCy-based analysis):
-    ```bash
+    ```
     python -m spacy download en_core_web_sm
     ```
 
 5. **Run the FastAPI app**:
-    ```bash
+    ```
     uvicorn main:app --reload --port 8000
     ```
 
@@ -115,12 +115,12 @@ This API offers two endpoints:
 This project includes tests for both the normal and SpaCy-based tender analysis endpoints. You can run the tests using `pytest`:
 
 1. **Install test dependencies**:
-    ```bash
+    ```
     pip install pytest pytest-asyncio httpx
     ```
 
 2. **Run tests**:
-    ```bash
+    ```
     pytest tests/
     ```
 
@@ -131,7 +131,7 @@ Tests will run for each tender document in the sample data and verify the respon
 - `tests/test_analyze_tender_spacy.py`: Tests for the `analyze_tender_spacy` endpoint using spaCy.
 
 ### Example Test Output
-```bash
+```
 $ pytest tests/test_analyze_tender.py
 =============================== test session starts =====================================
 platform win32 -- Python 3.12.0, pytest-9.0.2, pluggy-1.6.0
@@ -140,3 +140,22 @@ collected 30 item
 tests/test_analyze_tender.py                                       [50%]
 tests\test_analyze_tender_spacy.py                                 [100%]
 =============================== 30 passed in 1.02 seconds ===============================
+```
+
+## Docker Containerization
+
+To containerize the FastAPI application, I provide a `Dockerfile` that builds a Docker image for the application. Here's how to run it:
+
+### Build the Docker Image:
+
+In the project directory, run the following command:
+
+```
+docker build -t tender-barrier-analyzer .
+```
+### Run the Docker Container:
+After the image is built, you can run it as a container:
+
+```
+docker run -d -p 8000:8000 tender-barrier-analyzer
+```
